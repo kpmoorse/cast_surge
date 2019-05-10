@@ -1,0 +1,29 @@
+CC     = "C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -nodeclspec 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"cast_surge_sfun.obj"\
+	"c3_cast_surge.obj"\
+	"cast_surge_sfun_registry.obj"\
+	"lccstub.obj"\
+	"c_mexapi_version.obj"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2018b\extern\include"  -I"C:\Program Files\MATLAB\R2018b\simulink\include"  -I"C:\Program Files\MATLAB\R2018b\simulink\include\sf_runtime"  -I"C:\Program Files\MATLAB\R2018b\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2018b\rtw\c\src"  -I"C:\Users\Kellan\Documents\MATLAB\FlySim\slprj\_sfprj\cast_surge\_self\sfun\src"  -I"C:\Users\Kellan\documents\MATLAB\FlySim\slprj\_sfprj\cast_surge\_self\sfun\src"  -I"C:\Users\Kellan\documents\MATLAB\FlySim"  -I"C:\Users\Kellan\documents\School\murray rotation"  -I"C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\include64" 
+ 
+
+cast_surge_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o cast_surge_sfun.mexw64 @cast_surge_sfun.lmko
+cast_surge_sfun.obj :	"cast_surge_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "cast_surge_sfun.c"
+c3_cast_surge.obj :	"c3_cast_surge.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_cast_surge.c"
+cast_surge_sfun_registry.obj :	"cast_surge_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "cast_surge_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2018b\sys\lcc64\lcc64\mex\lccstub.c"
+c_mexapi_version.obj :	"C:\Program Files\MATLAB\R2018b\extern\version\c_mexapi_version.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2018b\extern\version\c_mexapi_version.c"
