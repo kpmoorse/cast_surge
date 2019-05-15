@@ -2,17 +2,13 @@ dtmc
 
 module walker
 
-	// local state
-	// 0 - Left Walk
-	// 1 - Right Walk
-	s : [0..1] init 0;
-	// value of the die
-	x : [0..100] init 50;
+	// Bounded location
+	x : [-100..100] init 0;
 	
-	[] s=0 & (x<=0) -> 0.9 : (s'=s) & (x'=x-1) + 0.1 : (s'=1-s) & (x'=x+1);
-	[] s=0 & (x>=1) -> 1.0 : (s'=1-s) & (x'=x+1);
-	[] s=1 & (x>=100) -> 0.9 : (s'=s) & (x'=x+1) + 0.1 : (s'=1-s) & (x'=x-1);
-	[] s=1 & (x<=99) -> 1.0 : (s'=1-s) & (x'=x-1);
+	// Unbiased random walk
+	[] x>=-99 & x<=99 -> 0.5 : (x'=x-1) + 0.5 : (x'=x+1);
+	[] x=100 -> 1.0 : (x'=x-1);
+	[] x=-100 -> 1.0 : (x'=x+1);
 
 endmodule
 
