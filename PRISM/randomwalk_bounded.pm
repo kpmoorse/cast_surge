@@ -5,7 +5,7 @@ const int x0 = 1;
 
 module walker
 
-	// Unbounded location
+	// Bounded location
 	x : [0..ext] init x0;
 	
 	// Unbiased random walk
