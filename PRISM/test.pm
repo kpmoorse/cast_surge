@@ -3,6 +3,9 @@ dtmc
 const int ext = 100; // Arena size
 const double a = 0.2; // Levy flight transition probability
 
+formula signx = x>=0 ? 1:-1;
+formula absx = x*signx;
+
 module walker_state
 
 	// local state
@@ -22,11 +25,12 @@ endmodule
 module walker_location
 
 	// Bounded location
-	x : [-ext..ext] init 0;
+	x : [-ext..ext] init -10;
+	xx : [-ext..ext] init 10;
 
 	// Unbiased random walk
-	[step] (s=1 & x>=-ext+1) -> 1.0 : (x'=x-1);
-	[step] (s=2 & x<=ext-1) -> 1.0 : (x'=x+1);
+	[step] (s=1 & x>=-ext+1) -> 1.0 : (x'=x-1) & (xx'=absx);
+	[step] (s=2 & x<=ext-1) -> 1.0 : (x'=x+1) & (xx'=absx);
 
 endmodule
 
