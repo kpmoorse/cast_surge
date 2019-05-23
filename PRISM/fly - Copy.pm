@@ -13,12 +13,11 @@ const int x0;
 const int y0;
 
 // Define boundary formulae
-formula inbounds = x>=-ext+1 & x <=ext-1;
+formula inbounds = x>=-ext+2 & x <=ext-2;
+formula penL = x=-ext+1;
+formula penR = x=ext-1;
 formula edgeL = x=-ext;
 formula edgeR = x=ext;
-
-formula signx = x>0 ? 1:-1;
-formula absx = x*signx;
 
 // Define deadlock labels
 label "fail" = s=5;
@@ -43,9 +42,12 @@ module flystate
 	[step] (inbounds & (s=1 | s=2)) -> 1-a : (s'=s) + a : (s'=3-s);
 
 	// If out-of-bounds, begin return checks
-	[return] (!inbounds & (s=1 | s=2 | s=4)) -> 1.0 : (s'=3);
-	[return] (!inbounds & s=3) -> 1.0 : (s'=s);
-	[return] (inbounds & s=3) -> 1.0 : (s'=(x>0?1:2));
+	//[step] (s=1 & penL) -> 1.0 : (s'=3);
+	//[step] (s=2 & penR) -> 1.0 : (s'=3);
+	[step] ((s=1 | s=2) & (penL | penR)) -> 1.0 : (s'=3);
+	[step] (s=3 & (edgeL | edgeR)) -> 1.0 : (s'=s);
+	[step] (s=3 & penL) -> 1.0 : (s'=2);
+	[step] (s=3 & penR) -> 1.0 : (s'=1);
 
 	// Change state based on stochastic plume sensing
 	[step] (inbounds & (s=1 | s=2) & (x>-plume & x<plume)) -> b : (s'=4) + 1-b : (s'=s);
@@ -68,17 +70,18 @@ module flyloc
 	y : [0..ext] init ext;
 
 	// Cast & surge
-	[step] (inbounds & s=1) -> 1.0 : (x'=x-1);
-	[step] (inbounds & s=2) -> 1.0 : (x'=x+1);
+	[step] (s=1) -> 1.0 : (x'=x-1);
+	[step] (s=2) -> 1.0 : (x'=x+1);
 	[step] (s=4 & y!=0) -> 1.0 : (y'=y-1);
 
 	// Return from outside arena in exp. dist. time
-	[return] (!inbounds) -> d : (x'=x+(x>0?-1:1)) + 1-d : (x'=x);
-	[return] (inbounds) -> 1.0 : (x'=x+(x>0?-1:1));
+	[step] (s=3 & (edgeL)) -> d : (x'=x+1) + 1-d : (x'=x);
+	[step] (s=3 & (penL)) -> 1.0 : (x'=x+1);
+	[step] (s=3 & (edgeR)) -> d : (x'=x-1) + 1-d : (x'=x);
+	[step] (s=3 & (penR)) -> 1.0 : (x'=x-1);
 
 endmodule
 
 rewards "steps"
 	[step] true : 1;
-	[return] true : 1;
 endrewards
