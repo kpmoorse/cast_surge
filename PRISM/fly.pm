@@ -6,6 +6,8 @@ const double c = 0.1; // Erroneous Cast<->Surge transition probability
 const double d = 0.1; // Arena return probability per step
 const int ext = 100; // Arena extent
 const int plume = 10; // Plume half-width
+const int cref = 1; // Cast refractory period length, in steps
+const int sref = 3; // Surge refractory period length, in steps
 const int ang = 0;
 
 // Define uninitialized variables
@@ -35,7 +37,7 @@ label "success" = s=6;
 
 module flystate
 
-	// local state
+	// Local state
 	// 0 - Cast init
 	// 1 - Cast left
 	// 2 - Cast right
@@ -44,6 +46,8 @@ module flystate
 	// 5 - Failure
 	// 6 - Success
 	s : [0..6] init 0;
+	// Refractory period
+	r : [0..max(cref, sref)] init 0;
 	
 	// Randomly initialize direction
 	[ini] (inbounds & s=0) -> 0.5 : (s'=1) + 0.5 : (s'=2);
@@ -54,9 +58,11 @@ module flystate
 	[return] (inbounds & s=3) -> 1.0 : (s'=(x>0?1:2));
 
 	// If Cast, switch to Surge or MC walk over direction
-	[step] (inbounds & (s=1 | s=2)) -> od : (s'=4) + (1-od)*(1-a) : (s'=s) + (1-od)*(a) : (s'=3-s);
+	[step] (inbounds & r=0 & (s=1 | s=2)) -> od : (s'=4) & (r'=sref) + (1-od)*(1-a) : (s'=s) + (1-od)*(a) : (s'=3-s);
+	[step] (inbounds & r>=1 & (s=1 | s=2)) -> od : (s'=s) & (r'=r-1) + (1-od) : (s'=s) & (r'=cref);
 	// If Surge, continue surging or switch to Cast 
-	[step] (inbounds & s=4 & y>=0) -> od : (s'=s) + 1-od : (s'=0);
+	[step] (inbounds & r=0 & s=4 & y>=0) -> od : (s'=s) + 1-od : (s'=0) & (r'=cref);
+	[step] (inbounds & r>=1 & s=4 & y>=0) -> od : (s'=s) & (r'=sref) + 1-od : (s'=s) & (r'=r-1);
 
 	// If near target, success
 	[end] (inbounds & (s=1 | s=2 | s=4) & (pow(x,2)+pow(y,2)<pow(10,2))) -> 1.0 : (s'=6);
