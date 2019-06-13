@@ -5,32 +5,57 @@ import numpy as np
 from numpy import pi, sqrt, exp
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from matplotlib.animation import FuncAnimation
+from matplotlib import animation
+from matplotlib import rcParams
+
+rcParams['animation.convert_path'] = 'C:\\Users\Kellan\\Documents\\Python\\ImageMagick-7.0.8-Q16\\magick.exe'
+rcParams['animation.ffmpeg_path'] = 'C:\\Users\\Kellan\\Documents\\Python\\ffmpeg\\bin\\ffmpeg.exe'
 
 dtype = "anim"
+tail = 15
 
 dir_prism = 'C:\\Program Files\\prism-4.5\\bin'
 dir_model = 'C:\\Users\\Kellan\\Documents\\git\\cast_surge\\PRISM'
 
-# Run model via PRISM console
-os.chdir(dir_prism)
-subprocess.call(["prism", # Call PRISM
-                 os.path.join(dir_model,"fly.pm"), # Model file
-                 "-const",
-                 "x0=90,y0=100", # Constant definition
-                 "-simpath", # Simulate
-                 "deadlock", # Stop condition
-                 os.path.join(dir_model,"temp.csv")], # Output location
-                shell=True)
-os.chdir(dir_model)
-dat = pd.read_csv('temp.csv', sep=' ').to_numpy()
+init_rng = np.arange(-95, 95+1, 40)
+
+dat = []
+long = 0
+for x0 in init_rng:
+    # Run model via PRISM console
+    os.chdir(dir_prism)
+    subprocess.call(["prism", # Call PRISM
+                     os.path.join(dir_model,"fly.pm"), # Model file
+                     "-const",
+                     "x0=%i,y0=95,sref=3,cref=1"%x0, # Constant definition
+                     "-simpath", # Simulate
+                     "deadlock", # Stop condition
+                     os.path.join(dir_model,"temp.csv")], # Output location
+                    shell=True)
+    os.chdir(dir_model)
+    temp = pd.read_csv('temp.csv', sep=' ').to_numpy()
+    temp = temp[None,:,:] # Force 3D array
+
+    # Track longest run length
+    lenrun = temp.shape[1]
+    long = max(long, lenrun)
+
+    # If first run, save
+    if len(dat) == 0:
+        dat = temp
+    # If not first run, pad all lengths to longest and append
+    else:
+        if dat.shape[1] < long:
+            dat = np.pad(dat, ((0,0),(0,long-dat.shape[1]),(0,0)), 'edge')
+        if temp.shape[1] < long:
+            temp = np.pad(temp, ((0,0),(0,long-temp.shape[1]),(0,0)), 'edge')
+        dat = np.concatenate((dat, temp), axis=0)
 
 # Generate odor map
 def od(x, y, m=1/2, sig0=1):
     sig = m*y + sig0
     A = sig0/sig
-    z = A * exp(-x**2/(2*sig**2))
-    print(z)
+    z = A * exp(-(x-y/3)**2/(2*sig**2))
     return np.minimum(1, z)
 
 ext = 100
@@ -60,12 +85,18 @@ elif dtype == "anim":
 
     fig, ax = plt.subplots()
     xpos, ypos = [], []
-
+    alpha = np.linspace(1/tail,1,tail)
+    rgba = np.ones((tail,4))
+    rgba[:, 3] = alpha
+    rgba = np.tile(rgba, (len(init_rng),1))
+    
     ax = fig.gca()
+    figsize = fig.get_size_inches()*fig.dpi
     plot = ax.imshow(z, extent=(min(x),max(x),min(y),max(y)))
-    ln, = plt.plot(0, 50, 'w.')
+    ln = plt.scatter(np.zeros(tail*len(init_rng)),
+                     np.zeros(tail*len(init_rng)),
+                     c=rgba, s=7)
     ax.set_aspect('equal')
-
 
     divider = make_axes_locatable(ax)
     cax = divider.append_axes("right", size="5%", pad=0.05)
@@ -78,14 +109,26 @@ elif dtype == "anim":
         ax.invert_yaxis()
         return ln,
 
-
-    def update(frame):
-        xpos, ypos = dat[frame, 4:6]
-        ln.set_data(xpos, ypos)
+    def update(ix):
+        xpos = np.reshape(dat[:, ix-tail:ix, 4], (-1))
+        ypos = np.reshape(dat[:, ix-tail:ix, 5], (-1))
+        ln.set_offsets(np.concatenate((xpos[:,None], ypos[:,None]), axis=1))
+##        plt.savefig('.\\gif\\frame_%04i.png'%ix)
         return ln,
     
-    ani = FuncAnimation(fig, update, frames=np.arange(dat.shape[0]),
-                        init_func=init, blit=True,
-                        interval=1000/60, repeat=False)
+    ani = animation.FuncAnimation(fig, update,
+                                  frames=np.arange(tail, dat.shape[1]),
+                                  init_func=init, blit=True,
+                                  interval=1000/60, repeat=False)
+
+##    WriterFile = animation.writers['ffmpeg_file']
+##    writer1 = WriterFile(fps=30, extra_args=['-r','25'])
+##    ani.save('sim_anim.gif', writer='imagemagick')
+    print("Longest: ", long)
+##    if long<3000:
+##        plt.show()
+##    else:
+##        print('Quitting...')
+
 
     plt.show()
