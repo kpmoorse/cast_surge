@@ -8,30 +8,29 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib import animation
 from matplotlib import rcParams
 
-rcParams['animation.convert_path'] = 'C:\\Users\Kellan\\Documents\\Python\\ImageMagick-7.0.8-Q16\\magick.exe'
-rcParams['animation.ffmpeg_path'] = 'C:\\Users\\Kellan\\Documents\\Python\\ffmpeg\\bin\\ffmpeg.exe'
-
 dtype = "anim"
-tail = 15
+tail = 15 # Length of tail in animation"
 
-dir_prism = 'C:\\Program Files\\prism-4.5\\bin'
-dir_model = 'C:\\Users\\Kellan\\Documents\\git\\cast_surge\\PRISM'
+dir_prism = '/home/dickinsonlab/prism-4.5-linux64/bin/'
+dir_model = '/home/dickinsonlab/git/cast_surge/'
 
-init_rng = np.arange(-95, 95+1, 40)
+init_rng = np.arange(-95, 95+1, 10)
 
 dat = []
 long = 0
 for x0 in init_rng:
     # Run model via PRISM console
     os.chdir(dir_prism)
-    subprocess.call(["prism", # Call PRISM
+    print(dir_prism)
+    call_line = ["./prism", # Call PRISM
                      os.path.join(dir_model,"fly.pm"), # Model file
                      "-const",
                      "x0=%i,y0=95,sref=3,cref=1"%x0, # Constant definition
                      "-simpath", # Simulate
                      "deadlock", # Stop condition
-                     os.path.join(dir_model,"temp.csv")], # Output location
-                    shell=True)
+                     os.path.join(dir_model,"temp.csv")] # Output location
+    print(' '.join(call_line))
+    subprocess.call(call_line, shell=False)
     os.chdir(dir_model)
     temp = pd.read_csv('temp.csv', sep=' ').to_numpy()
     temp = temp[None,:,:] # Force 3D array
@@ -60,7 +59,7 @@ def od(x, y, m=1/2, sig0=1):
 
 ext = 100
 x = np.arange(-ext,ext+1)
-y = np.flip(np.arange(0, ext+1))
+y = np.flip(np.arange(0, ext+1), axis=0)
 X, Y = np.meshgrid(x, y)
 z = od(X, Y, m=0.025, sig0=3)
 
@@ -121,14 +120,6 @@ elif dtype == "anim":
                                   init_func=init, blit=True,
                                   interval=1000/60, repeat=False)
 
-##    WriterFile = animation.writers['ffmpeg_file']
-##    writer1 = WriterFile(fps=30, extra_args=['-r','25'])
-##    ani.save('sim_anim.gif', writer='imagemagick')
     print("Longest: ", long)
-##    if long<3000:
-##        plt.show()
-##    else:
-##        print('Quitting...')
-
 
     plt.show()
