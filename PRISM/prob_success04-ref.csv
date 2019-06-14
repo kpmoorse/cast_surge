@@ -1,0 +1,222 @@
+cref, sref, Result
+0, 0, Error: Invalid range (0-0) for variable "r" ("r : [0..0] init 0", line 51, column 9).
+0, 2, 0.9992635928858608
+0, 4, 0.9992194035911008
+0, 6, 0.9979330294407517
+0, 8, 0.993120474790431
+0, 10, 0.9829632989620919
+0, 12, 0.9662325392378459
+0, 14, 0.9421999297350765
+0, 16, 0.9119612538370093
+0, 18, 0.8786218258490652
+0, 20, 0.8430361581125259
+2, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+2, 2, 0.999484406297287
+2, 4, 0.9995620336198857
+2, 6, 0.999858936077149
+2, 8, 0.9998345445903367
+2, 10, 0.9993791061374233
+2, 12, 0.9975816215626407
+2, 14, 0.9931817487674913
+2, 16, 0.985589370964746
+2, 18, 0.9751494420580366
+2, 20, 0.9626851841370869
+4, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+4, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+6, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+8, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+10, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+12, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+14, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+16, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+18, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 0, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 2, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 4, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 6, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 8, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 10, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 12, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 14, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 16, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 18, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
+20, 20, Error: Iterative method did not converge within 10000 iterations.
+Consider using a different numerical method or increasing the maximum number of iterations.
