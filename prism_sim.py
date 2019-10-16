@@ -8,13 +8,14 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib import animation
 from matplotlib import rcParams
 
-dtype = "anim"
+dtype = "static"
 tail = 15 # Length of tail in animation"
 
 dir_prism = '/home/dickinsonlab/prism-4.5-linux64/bin/'
 dir_model = '/home/dickinsonlab/git/cast_surge/'
 
 init_rng = np.arange(-95, 95+1, 10)
+init_rng = [50]
 
 dat = []
 long = 0
@@ -69,7 +70,11 @@ if dtype == "static":
     fig = plt.figure()
     ax = fig.gca()
     plot = ax.imshow(z, extent=(min(x),max(x),min(y),max(y)))
+    dat = dat[0]
     plt.plot(dat[:,4], dat[:,5], 'w')
+    plt.tick_params(bottom=False, labelbottom=False, left=False, labelleft=False)
+    print(dat.shape)
+    print(dat)
     ax.set_aspect('equal')
     plt.gca().invert_yaxis()
 
